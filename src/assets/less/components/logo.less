@@ -1,0 +1,27 @@
+.logo {
+  position: relative;
+  max-width: 190px;
+  display: inline-block;
+
+  &__img {
+    width: 100%;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    &--second {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    max-width: 180px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 115px;
+  }
+}

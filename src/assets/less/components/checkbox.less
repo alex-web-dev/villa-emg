@@ -1,0 +1,41 @@
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  user-select: none;
+
+  &__input {
+    display: none;
+  }
+
+  &__switch {
+    margin-top: 1px;
+    position: relative;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid @color-primary;
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:before {
+      .pseudo-icon("../img/icons/check-white.svg", 10px, 10px);
+      visibility: hidden;
+    }
+  }
+
+  &__input:checked ~ &__switch {
+    background: @color-primary;
+
+    &:before {
+      visibility: visible;
+    }
+  }
+
+  &__text {
+    margin-left: 8px;
+    user-select: none;
+  }
+}

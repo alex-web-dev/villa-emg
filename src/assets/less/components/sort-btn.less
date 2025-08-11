@@ -1,0 +1,49 @@
+.sort-btn {
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid @color-secondary-40;
+  border-radius: 10px;
+  text-align: left;
+  color: @color-primary-dark-60;
+  transition: border 0.3s;
+
+  &:hover {
+    border-color: @color-primary;
+  }
+
+  &--disabled {
+    color: @color-grey;
+    border-color: transparent;
+    pointer-events: none;
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+
+  &__value {
+    margin-left: 4px;
+  }
+
+  &__arrow-box {
+    padding-left: 8px;
+    width: 32px;
+    flex: none;
+    margin-left: auto;
+  }
+
+  &__arrow {
+    stroke: @color-primary-dark;
+    transition: stroke 0.3s;
+  }
+
+  &:hover &__arrow {
+    stroke: @color-primary;
+  }
+
+  &--disabled &__arrow,
+  &--disabled:hover &__arrow {
+    stroke: @color-grey;
+  }
+}

@@ -1,0 +1,45 @@
+.not-found {
+  text-align: center;
+
+  &__subtitle {
+    margin-top: 12px;
+  }
+
+  &__text {
+    margin-top: 12px;
+  }
+
+  &__btns {
+    margin-top: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__btn {
+    min-width: 164px;
+  }
+
+  @media (max-width: 767px) {
+    &__title {
+      font-size: 100px;
+    }
+
+    &__subtitle {
+      margin-top: 24px;
+    }
+
+    &__text {
+      line-height: 1.35;
+    }
+
+    &__btns {
+      flex-direction: column;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}

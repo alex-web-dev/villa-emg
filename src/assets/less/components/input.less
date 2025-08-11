@@ -1,0 +1,66 @@
+.input {
+  &__label {
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+
+  &__field {
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: #fff;
+    color: #261100;
+    transition: border 0.3s;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+    }
+
+    &[type="number"] {
+      appearance: textfield;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: @color-primary;
+    }
+
+    &::placeholder {
+      color: @color-primary-dark-60;
+    }
+
+    &--area {
+      resize: none;
+      height: 90px;
+    }
+
+    &--border {
+      background-color: transparent;
+      border-color: @color-secondary-40;
+    }
+  }
+
+  &__error {
+    margin-top: 5px;
+    display: none;
+    min-height: 16px;
+    visibility: hidden;
+
+    &--hidden {
+      visibility: hidden;
+      display: block;
+    }
+  }
+
+  &--error &__field {
+    border-color: @color-danger;
+  }
+
+  &--error &__error {
+    display: block;
+    visibility: visible;
+  }
+}

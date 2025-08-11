@@ -1,0 +1,19 @@
+.accordion__btn {
+  user-select: none;
+  cursor: pointer;
+}
+
+.accordion__content {
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.accordion--activating .accordion__content {
+  visibility: visible;
+}
+
+.accordion--active .accordion__content {
+  height: auto;
+  visibility: visible;
+}

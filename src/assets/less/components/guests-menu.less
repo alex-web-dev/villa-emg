@@ -1,0 +1,36 @@
+.guests-menu {
+  padding: 12px;
+  background: #fff;
+  border-radius: 6px;
+  min-width: 290px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  &--border {
+    background-color: @color-bg;
+    border: 1px solid @color-secondary-40;
+  }
+
+  &__list {
+    max-height: 222px;
+
+    .simplebar-track.simplebar-vertical {
+      right: -10px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:first-child) {
+      margin-top: 12px;
+    }
+  }
+
+  &__item-counter {
+    margin-left: 20px;
+  }
+}

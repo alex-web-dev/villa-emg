@@ -1,0 +1,51 @@
+.btn-catalog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__lines {
+    position: relative;
+    z-index: 6;
+    display: flex;
+    width: 19px;
+
+    &,
+    &:before,
+    &:after {
+      height: 2px;
+      border-radius: 2px;
+      background-color: @color-primary;
+      display: block;
+      transform: rotate(0);
+      transition: transform 0.4s, width 0.4s;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 25px;
+    }
+
+    &:before {
+      transform: translateY(-7px);
+    }
+
+    &:after {
+      transform: translateY(7px);
+    }
+  }
+
+  &.js-catalog-menu-opened &__lines {
+    height: 0;
+
+    &:before {
+      transform: rotate(-45deg);
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+  }
+}

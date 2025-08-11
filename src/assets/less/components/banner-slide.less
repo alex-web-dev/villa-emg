@@ -1,0 +1,143 @@
+.banner-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: @color-black-28;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 138px;
+    background: linear-gradient(0deg, #000000 -234.19%, rgba(0, 0, 0, 0) 93%);
+  }
+
+  &__container {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    padding-top: 30px;
+    position: relative;
+    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__info {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+  }
+
+  &__location {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__text {
+    margin: 64px auto 0;
+    max-width: 340px;
+  }
+
+  &__btns {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__btn {
+    min-width: 164px;
+  }
+
+  &__location {
+    position: absolute;
+    left: 0;
+    bottom: 55px;
+    max-width: 480px;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 1280px) {
+    &__info {
+      max-width: 860px;
+    }
+
+    &__text {
+      margin-top: 52px;
+      max-width: 320px;
+    }
+
+    &__location {
+      max-width: 330px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__content {
+      padding-top: 0;
+      padding-bottom: 60px;
+    }
+    
+    &__info {
+      max-width: 440px;
+    }
+
+    &__text {
+      margin-top: 36px;
+      max-width: 290px;
+    }
+
+    &__btns {
+      margin-top: 24px;
+      flex-direction: column;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+
+    &__location {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      justify-content: center;
+
+      .text__icon {
+        max-width: 20px;
+      }
+    }
+  }
+}

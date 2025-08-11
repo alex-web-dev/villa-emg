@@ -1,0 +1,24 @@
+.catalog-filter {
+  &__menu {
+    right: 0;
+    left: unset;
+    margin-top: 4px;
+  }
+
+  &__btn {
+    width: 100%;
+  }
+
+  &.dropdown--active .sort-btn {
+    border-color: @color-primary;
+  }
+
+  &.dropdown--active .sort-btn:not(.sort-btn--disabled) .sort-btn__arrow {
+    stroke: @color-primary;
+    transform: rotate(180deg);
+  }
+
+  &__btn.catalog-filter__btn--fill {
+    color: @color-primary-dark;
+  }
+}

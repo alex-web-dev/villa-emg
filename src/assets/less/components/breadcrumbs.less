@@ -1,0 +1,44 @@
+.breadcrumbs {
+  padding-bottom: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 4px;
+
+      &:after {
+        margin-left: 4px;
+        content: "/";
+        color: #aeaeae;
+      }
+    }
+  }
+
+  &__link,
+  &__current {
+    flex: 0 0 auto;
+  }
+
+  &__link {
+    color: #aeaeae;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__current {
+    color: #333;
+  }
+}

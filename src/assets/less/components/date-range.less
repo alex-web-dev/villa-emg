@@ -1,0 +1,124 @@
+.date-range {
+  &__label {
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+
+  &__main {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__input {
+    flex: 1 1 0%;
+  }
+
+  &__input-main {
+    position: relative;
+    padding: 15px 33px;
+    height: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    line-height: 1.3;
+    color: @color-primary-dark;
+    transition: border 0.3s;
+  }
+
+  &--border &__input-main {
+    background-color: transparent;
+    border-color: @color-secondary-40;
+  }
+
+  &__input--error &__input-main {
+    border-color: @color-danger;
+  }
+
+  &__input:not(:last-child) &__input-main {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: none;
+  }
+
+  &__input:not(:first-child) &__input-main {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left: none;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 20px;
+      background-color: #bdbdbd;
+    }
+  }
+
+  &.active &__input-main,
+  &__main:hover &__input-main {
+    border-color: @color-primary;
+  }
+
+  &__input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__input-field {
+    padding: 0;
+    border: none;
+    outline: none;
+    max-width: 100%;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  &__input-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    visibility: hidden;
+  }
+
+  &__input-field--fill ~ &__input-clear {
+    visibility: visible;
+  }
+
+  &__error {
+    margin-top: 5px;
+    display: none;
+    min-height: 16px;
+    visibility: hidden;
+
+    &--hidden {
+      visibility: hidden;
+      display: block;
+    }
+
+    &--start {
+      padding-right: 2px;
+    }
+
+    &--end {
+      padding-left: 2px;
+    }
+  }
+
+  &__input--error {
+    border-color: @color-danger;
+  }
+
+  &__input--error &__error {
+    display: block;
+    visibility: visible;
+  }
+}

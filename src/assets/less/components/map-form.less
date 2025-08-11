@@ -1,0 +1,51 @@
+.map-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  &__item {
+    flex: 1 1 0%;
+  }
+
+  &__btns {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex: none;
+  }
+
+  &__btn {
+    user-select: none;
+    min-width: 184px;
+  }
+
+  @media (max-width: 1280px) {
+    flex-wrap: wrap;
+    
+    &__btns {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    &__btn {
+      flex: 1 1 auto;
+    }
+  }
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+
+    &__item {
+      width: 100%;
+    }
+
+    &__btn {
+      margin-top: 12px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 24px 16px;
+  }
+}

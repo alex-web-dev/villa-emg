@@ -1,0 +1,41 @@
+.phone-menu {
+  background: #fff;
+  border-radius: 6px;
+  min-width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  &__list {
+    height: 230px;
+
+    .simplebar-track.simplebar-vertical {
+      right: 3px;
+    }
+  }
+
+  &__item {
+    padding: 15px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: background 0.15s;
+
+    &:hover {
+      background: @color-secondary-10;
+    }
+  }
+
+  &__item-country {
+    margin-left: 12px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+
+  &__item-code {
+    margin-left: 12px;
+  }
+}

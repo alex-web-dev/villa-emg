@@ -1,0 +1,35 @@
+.book-form {
+  padding: 24px 28px 36px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(3.5px);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  &__item {
+    flex: 1 1 0%;
+  }
+
+  &__btn {
+    margin-top: 24px;
+    flex: none;
+    user-select: none;
+  }
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+
+    &__item {
+      width: 100%;
+    }
+
+    &__btn {
+      margin-top: 12px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 24px 16px;
+  }
+}

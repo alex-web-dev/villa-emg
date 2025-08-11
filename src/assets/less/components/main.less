@@ -1,0 +1,15 @@
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  &--pt-header {
+    padding-top: calc(97px + 28px);
+  }
+
+  @media (max-width: 767px) {
+    &--pt-header {
+      padding-top: 80px;
+    }
+  }
+}

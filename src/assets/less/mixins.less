@@ -1,0 +1,21 @@
+.font-face(@font-family, @file-path, @weight: normal, @style: normal, @display: swap, @asset-pipeline: false) {
+  @font-face {
+    font-family: @font-family;
+    font-weight: @weight;
+    font-display: @display;
+    font-style: @style;
+    src: url("@{file-path}.woff2") format("woff2"), url("@{file-path}.woff") format("woff");
+  }
+}
+
+.icon(@url, @width, @height) {
+  background: url(@url) center / contain no-repeat;
+  width: @width;
+  height: @height;
+}
+
+.pseudo-icon(@url, @width, @height, @display: inline-block) {
+  content: "";
+  display: @display;
+  .icon(@url, @width, @height);
+}

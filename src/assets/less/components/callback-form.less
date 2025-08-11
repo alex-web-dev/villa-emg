@@ -1,0 +1,30 @@
+.callback-form {
+  padding: 28px;
+  background: rgba(@color-white, 0.55);
+  backdrop-filter: blur(3px);
+
+  &__item {
+    &:not(:first-child) {
+      margin-top: 8px;
+    }
+
+    &--xs {
+      max-width: 295px;
+    }
+  }
+
+  &__btn {
+    margin-top: 20px;
+    user-select: none;
+  }
+
+  @media (max-width: 767px) {
+    padding: 24px 16px;
+
+    &__item {
+      &--xs {
+        max-width: 100%;
+      }
+    }
+  }
+}

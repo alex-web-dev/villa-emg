@@ -1,0 +1,28 @@
+.btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+
+  &--left {
+    img {
+      transform: rotate(180deg);
+    }
+  }
+
+  &--xs {
+    width: 36px;
+    height: 40px;
+  }
+
+  @media (max-width: 767px) {
+    width: 40px;
+    height: 40px;
+
+    &--xs {
+      width: 38px;
+      height: 38px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.book-villa {
+  position: relative;
+  padding: 80px 0 136px;
+  min-height: 955px;
+  background: url('../../img/index/book-villa.jpg') center / cover no-repeat;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: @color-black-28;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    margin: 0 auto;
+    max-width: 1065px;
+  }
+
+  &__form {
+    margin: 40px auto 0;
+    padding: 32px;
+    width: 548px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 1280px) {
+    min-height: 892px;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 75px;
+    padding-bottom: 115px;
+    min-height: 805px;
+
+    &__form {
+      margin-top: 36px;
+    }
+  }
+}

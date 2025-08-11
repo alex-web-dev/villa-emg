@@ -1,0 +1,15 @@
+.services-sidebar {
+  &__item {
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+
+  &__link {
+    transition: color 0.3s;
+    
+    &--active {
+      color: @color-primary-dark;
+    }
+  }
+}

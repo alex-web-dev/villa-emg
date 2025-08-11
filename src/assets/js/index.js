@@ -1,0 +1,26 @@
+import '@/assets/less/styles.less';
+
+import './imask.js';
+import './accordion.js';
+import './smooth-scroll.js';
+import './dropdown.js';
+import './form.js';
+import './form-params.js';
+import './select.js';
+import './date-range.js';
+import './input-guests.js';
+import './input-phone.js';
+import './input-checkboxes.js';
+import './banner.js';
+import './villa-slider.js';
+import './info-slider.js';
+import './catalog-slider.js';
+import './simplebar.js';
+import './counter.js';
+import './menu.js';
+import './video.js';
+import './locations.js';
+import './catalog-filter.js';
+import './header.js';
+import './services.js';
+import './map.js';

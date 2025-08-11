@@ -1,0 +1,47 @@
+.checkbox-circle {
+  display: inline-flex;
+  align-items: flex-start;
+  user-select: none;
+  cursor: pointer;
+
+  &__input {
+    display: none;
+  }
+
+  &__switch {
+    margin-top: 4px;
+    flex: 0 0 auto;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #666666;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500;
+
+    &:not(:first-child) {
+      margin-left: 18px;
+    }
+  }
+
+  &__input:checked ~ &__switch {
+    background-color: @color-primary;
+  }
+
+  &__input:checked ~ &__text {
+    font-weight: 700;
+    color: @color-primary;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    &__text {
+      &:not(:first-child) {
+        margin-left: 12px;
+      }
+    }
+  }
+}
