@@ -3,7 +3,7 @@ $formSend?.addEventListener("formSuccess", (event) => {
   const formData = new FormData(event.detail.form);
   const params = new URLSearchParams(formData);
 
-  window.location.href = "/villas.html?" + params.toString();
+  window.location.href = "villas.html?" + params.toString();
 });
 
 const params = new URLSearchParams(window.location.search);
