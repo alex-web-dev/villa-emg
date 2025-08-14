@@ -121,4 +121,73 @@
     display: block;
     visibility: visible;
   }
+
+  &__popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: none;
+    flex-direction: column;
+    background: @color-bg;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__popup-header {
+    position: relative;
+    z-index: 1;
+    padding: 22px 20px;
+    flex: none;
+  }
+
+  &__popup-back {
+    padding: 10px 0;
+  }
+
+  &__popup-main {
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+
+  &__popup-footer {
+    position: relative;
+    z-index: 1;
+    padding: 16px 20px;
+    flex: none;
+    border-top: 1px solid @color-secondary-40;
+  }
+
+  &__calendar-box {
+    display: flex;
+    flex-direction: column;
+
+    .flatpickr-calendar {
+      flex: 1 1 auto;
+      width: 100% !important;
+    }
+  }
+
+  &__calendar {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  &--hidden &__main {
+    display: none;
+  }
+
+  &--hidden &__label {
+    display: none;
+  }
+
+  &--inline ~ .flatpickr-calendar {
+    background-color: transparent;
+    box-shadow: none;
+  }
 }

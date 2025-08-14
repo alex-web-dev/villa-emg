@@ -16,11 +16,18 @@ $catalogFilters.forEach(($catalogFilter) => {
 
   $checkboxesInputs.forEach(($checkboxInput) => {
     $checkboxInput.addEventListener("change", () => {
-      if (closeWhenSelected) $dropdown.classList.remove("dropdown--active");
+      if (closeWhenSelected) {
+        $dropdown.classList.remove("dropdown--active");
+      }
+
       if ($checkboxInput.dataset.label) {
         $btn.classList.add("catalog-filter__btn--fill");
         $btnValue.innerText = $checkboxInput.dataset.label;
         $field.value = $checkboxInput.dataset.label;
+
+        params.set($field.name, $checkboxInput.dataset.label);
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        history.replaceState(null, "", newUrl);
       }
     });
   });

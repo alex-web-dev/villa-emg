@@ -24,7 +24,7 @@ const optimization = () => {
   return config;
 };
 
-const htmlPageNames = ["about", "villas", "404", "services", "map"];
+const htmlPageNames = ["about", "villas", "404", "services", "map", "villa", "booking-request"];
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HTMLWebpackPlugin({
     template: `./src/${name}.html`,

@@ -1,0 +1,71 @@
+.booking {
+  position: relative;
+  z-index: 5;
+  padding-bottom: 60px;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  &__main {
+    flex: 0 1 662px;
+  }
+
+  &__box {
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+
+  &__sidebar-box {
+    position: relative;
+    flex: none;
+    width: 550px;
+  }
+
+  &__sidebar {
+    top: calc(94px + 20px);
+    position: sticky;
+  }
+
+  @media (max-width: 1280px) {
+    &__sidebar-box {
+      width: 480px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    &__body {
+      gap: 20px;
+      flex-direction: column;
+    }
+
+    &__main {
+      order: 2;
+    }
+
+    &__sidebar-box {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding-bottom: 48px;
+
+    &__body {
+      gap: 12px;
+    }
+
+    &__box {
+      &:not(:first-child) {
+        margin-top: 12px;
+      }
+    }
+  }
+}

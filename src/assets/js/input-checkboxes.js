@@ -44,6 +44,7 @@ export function updateInput($container, $checkboxes) {
   $valuesBox.innerHTML = "";
 
   $hiddenField.value = checkedLabels.map((l) => l.value).join(", ");
+  $hiddenField.dispatchEvent(new Event("input", { bubbles: true }));
 
   if (checkedLabels.length) {
     $btn.classList.add("input-checkboxes__btn--fill");

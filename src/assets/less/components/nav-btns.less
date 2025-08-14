@@ -1,0 +1,21 @@
+.nav-btns {
+  padding: 12px;
+  background-color: @color-secondary-20;
+  border-radius: 12px;
+  
+  &__list {
+    display: flex;
+  }
+
+  &__btn {
+    flex: 1 1 0%;
+
+    &:not(:first-child) {
+      margin-left: 12px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 8px;
+  }
+}

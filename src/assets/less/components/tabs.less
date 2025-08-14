@@ -1,22 +1,15 @@
 .tabs {
-  &-btns {
-    display: flex;
-    overflow-x: auto;
-  }
+  &-list {
+    &__item {
+      display: none;
 
-  &-list__item {
-    display: none;
-    height: 0;
-    transition: height 0.55s;
+      &--active {
+        display: block;
 
-    &--active {
-      display: block;
-      height: auto;
-    }
-
-    &--activating {
-      display: block;
-      overflow: hidden;
+        &.tabs-list__item--flex {
+          display: flex;
+        }
+      }
     }
   }
 }

@@ -28,6 +28,7 @@ function updateInput($input) {
   const result = parts.join(", ");
   const $field = $input.querySelector(".input-guests__field");
   $field.value = result;
+  $field.dispatchEvent(new Event("input", { bubbles: true }));
 }
 
 function updateMenu($input) {

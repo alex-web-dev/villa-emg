@@ -26,11 +26,11 @@ $accordions.forEach(($accordion) => {
       setTimeout(() => ($content.style.height = "0px"));
     }
 
-    if ($btn.dataset.toggleText) {
-      const $btnSpan = $btn.querySelector("span");
-      const toggleText = $btnSpan.innerText;
-      $btnSpan.innerText = $btn.dataset.toggleText;
-      $btn.dataset.toggleText = toggleText;
+    const $btnText = $btn.querySelector(".accordion__btn-text");
+    if ($btnText && $btnText.dataset.toggleText) {
+      const currentText = $btnText.innerText;
+      $btnText.innerText = $btnText.dataset.toggleText;
+      $btnText.dataset.toggleText = currentText;
     }
 
     setTimeout(() => {

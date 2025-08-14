@@ -22,7 +22,7 @@ export function moveElement(options) {
   setTimeout(() => {
     if (window.innerWidth <= width && $elem.parentNode === $from) {
       $to[toInsertType]($elem);
-    } else if (window.innerWidth >= width && $elem.parentNode !== $from) {
+    } else if (window.innerWidth > width && $elem.parentNode !== $from) {
       $from[fromInsertType]($elem);
     }
   });
@@ -33,11 +33,12 @@ export function getScrollbarWidth() {
   return Math.abs(window.innerWidth - documentWidth);
 }
 
-export function lockBody(absoluteElems) {
+export function lockBody(absoluteElems, lockBy = "") {
   const scrollbarWidthPX = `${getScrollbarWidth()}px`;
 
   document.body.classList.add("body--lock");
   document.body.style.paddingRight = scrollbarWidthPX;
+  document.body.dataset.lockedBy = lockBy;
 
   const $absoluteElems = document.querySelectorAll(absoluteElems);
   $absoluteElems.forEach(($elem) => ($elem.style.paddingRight = scrollbarWidthPX));
@@ -46,9 +47,14 @@ export function lockBody(absoluteElems) {
 export function unlockBody(absoluteElems) {
   document.body.classList.remove("body--lock");
   document.body.style.paddingRight = "";
+  document.body.removeAttribute("data-locked-by");
 
   const $absoluteElems = document.querySelectorAll(absoluteElems);
   $absoluteElems.forEach(($elem) => ($elem.style.paddingRight = ""));
+}
+
+export function getBodyLockedBy() {
+  return document.body.dataset.lockedBy ? document.body.dataset.lockedBy : "";
 }
 
 export function isMobileDevice() {
@@ -61,5 +67,6 @@ export default {
   getScrollbarWidth,
   lockBody,
   unlockBody,
+  getBodyLockedBy,
   isMobileDevice,
 };

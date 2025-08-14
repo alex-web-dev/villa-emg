@@ -12,6 +12,16 @@
     }
   }
 
+  &:hover {
+    color: @color-primary;
+
+    .link__icon {
+      &--fill {
+        fill: @color-primary;
+      }
+    }
+  }
+
   &__icon {
     flex: 0 0 auto;
 
@@ -56,6 +66,11 @@
     &--stroke {
       stroke: @color-primary-dark;
       transition: stroke 0.3s;
+    }
+
+    &--fill {
+      fill: @color-primary-dark;
+      transition: fill 0.3s;
     }
   }
 

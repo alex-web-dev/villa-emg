@@ -1,8 +1,9 @@
 .popup {
   position: fixed;
-  left: 0;
+  left: 50%;
   top: 0;
-  z-index: 20;
+  z-index: 40;
+  transform: translateX(-50%);
   width: 100%;
   height: 100%;
   display: none;
@@ -10,6 +11,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
+  pointer-events: none;
   transition: visibility 0.4s, opacity 0.4s;
 
   &:before {
@@ -19,7 +21,17 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.781);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  &--show {
+    display: flex;
+  }
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
   }
 
   &__body {
@@ -36,94 +48,56 @@
     position: absolute;
     left: 0;
     top: 0;
-    margin-top: 60px;
-    padding-bottom: 60px;
-    min-height: calc(100% - 60px);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    min-height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+
+    &--top {
+      padding-top: 107px;
+      justify-content: flex-start;
+    }
   }
 
   &__content {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: calc(100vw - 40px);
+    max-width: calc(100% - 40px);
+    min-height: 0;
     transition: transform 0.4s;
   }
 
-  &__close {
-    position: absolute;
-    top: -29px;
-    right: -29px;
-    width: 58px;
-    height: 58px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: @color-primary;
-    border-radius: 50%;
-
-    img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-    }
+  &--full &__dialog {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
-  &__callback {
-    padding: 40px 40px 42px;
-    width: 750px;
+  &--full &__content {
+    flex: 1 1 auto;
+    width: 100%;
     max-width: 100%;
-    background-color: #fff;
-    border-radius: 20px;
-  }
-
-  &--show {
-    display: flex;
-  }
-
-  &--active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  @media (max-width: 991px) {
-    &__close {
-      top: 15px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-
-      img {
-        width: 16px;
-        height: 16px;
-      }
-    }
+    border-radius: 0;
   }
 
   @media (max-width: 767px) {
-    &__content {
-      max-width: calc(100vw - 24px);
-    }
-
-    &__callback {
-      padding: 45px 20px 30px;
-      border-radius: 15px;
-    }
-
-    &__close {
-      top: 10px;
-      right: 10px;
-      width: 36px;
-      height: 36px;
-
-      img {
-        width: 14px;
-        height: 14px;
+    &__dialog {
+      &--top {
+        padding-top: 73px;
       }
+    }
+
+    &--mobile-full &__dialog {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &--mobile-full &__content {
+      flex: 1 1 auto;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 0;
     }
   }
 }

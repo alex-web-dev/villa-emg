@@ -24,3 +24,8 @@ import './catalog-filter.js';
 import './header.js';
 import './services.js';
 import './map.js';
+import './popup.js';
+import './villa.js';
+import './igallery.js';
+import './gallery-popup.js';
+import './tabs.js';

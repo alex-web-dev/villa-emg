@@ -267,7 +267,7 @@
                 </svg>
                 <span>Back</span>
               </a>
-              <button class="btn btn--px-3xs btn--border btn--iflex btn--full map__mobile-filters-btn" type="button">
+              <button class="btn btn--px-3xs btn--border btn--iflex btn--full map__mobile-filters-btn js-open-popup" type="button" data-popup-name="filters">
                 <svg
                   class="btn__icon btn__icon--fill"
                   width="19"
@@ -281,7 +281,7 @@
                 <span>Filters</span>
               </button>
               <form
-                class="map-form map__form js-form js-form-params-fill"
+                class="map-form map__form js-form js-form js-form-params-fill"
                 action="#"
                 autocomplete="off"
                 data-form-no-alert-success
@@ -294,7 +294,7 @@
                       <div class="date-range__input-main">
                         <img class="date-range__input-icon" src="assets/img/icons/calendar.svg" alt="" />
                         <input
-                          class="date-range__input-field date-range__input-field--start"
+                          class="date-range__input-field date-range__input-field--start js-form js-form-params-fill-input"
                           type="text"
                           readonly
                           data-validate="empty"
@@ -310,7 +310,7 @@
                       <div class="date-range__input-main">
                         <img class="date-range__input-icon" src="assets/img/icons/calendar.svg" alt="" />
                         <input
-                          class="date-range__input-field date-range__input-field--end"
+                          class="date-range__input-field date-range__input-field--end js-form js-form-params-fill-input"
                           type="text"
                           readonly
                           data-validate="empty"
@@ -329,7 +329,7 @@
                   <div class="input-guests__content">
                     <div class="input-guests__main">
                       <input
-                        class="input-guests__field input-guests__field--border dropdown__btn"
+                        class="input-guests__field input-guests__field--border dropdown__btn js-form js-form-params-fill-input"
                         type="text"
                         placeholder="How many guests?"
                         name="guests"
@@ -440,7 +440,7 @@
                         <span class="input-checkboxes__placeholder">Select region</span>
                         <div class="input-checkboxes__values"></div>
                       </div>
-                      <input class="input-checkboxes__field" type="hidden" name="region" data-validate="empty" />
+                      <input class="input-checkboxes__field js-form-params-fill-input" type="hidden" name="region" data-validate="empty" />
                     </div>
                     <svg
                       class="input-checkboxes__arrow"
@@ -499,7 +499,7 @@
                   <span class="text text--danger text--sm input-checkboxes__error"></span>
                 </div>
                 <div class="map-form__btns">
-                  <button class="btn btn--px-3xs btn--border btn--iflex map-form__btn" type="button">
+                  <button class="btn btn--px-3xs btn--border btn--iflex map-form__btn js-open-popup" type="button" data-popup-name="filters">
                     <svg
                       class="btn__icon btn__icon--fill"
                       width="19"
@@ -787,5 +787,384 @@
         </div>
       </div>
     </footer>
+
+    <div class="popup popup--mobile-full" data-popup-name="filters">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="filters popup__content">
+            <div class="filters__header">
+              <div class="title filters__title">Filters</div>
+              <button class="icon icon--2xl filters__close js-close-popup">
+                <img class="icon__img icon__img--full" src="assets/img/icons/exit.svg" alt="" />
+              </button>
+            </div>
+            <div class="filters__main">
+              <div class="filters__fields">
+                <div class="date-range date-range--border date-range--popup filters__field">
+                  <label class="text text--lh-13 date-range__label">Stay Dates</label>
+                  <div class="date-range__main">
+                    <div class="date-range__input date-range__input--start">
+                      <div class="date-range__input-main">
+                        <img class="date-range__input-icon" src="assets/img/icons/calendar.svg" alt="" />
+                        <input
+                          class="date-range__input-field date-range__input-field--start"
+                          type="text"
+                          readonly
+                          data-validate="empty"
+                          name="date-start"
+                          placeholder="Select data" />
+                        <button class="date-range__input-clear date-range__input-clear--start" type="button">
+                          <img src="assets/img/icons/exit.svg" alt="" />
+                        </button>
+                      </div>
+                      <span class="text text--danger text--sm date-range__error date-range__error--start"></span>
+                    </div>
+                    <div class="date-range__input date-range__input--end">
+                      <div class="date-range__input-main">
+                        <img class="date-range__input-icon" src="assets/img/icons/calendar.svg" alt="" />
+                        <input
+                          class="date-range__input-field date-range__input-field--end"
+                          type="text"
+                          readonly
+                          data-validate="empty"
+                          name="date-end"
+                          placeholder="Select data" />
+                        <button class="date-range__input-clear date-range__input-clear--end" type="button">
+                          <img src="assets/img/icons/exit.svg" alt="" />
+                        </button>
+                      </div>
+                      <span class="text text--danger text--sm date-range__error date-range__error--end"></span>
+                    </div>
+                  </div>
+                  <div class="date-range__popup">
+                    <div class="date-range__popup-header">
+                      <button class="link link--iflex date-range__popup-back">
+                        <svg
+                          class="link__icon link__icon--stroke link__icon--mx-xl"
+                          width="36"
+                          height="17"
+                          viewBox="0 0 36 17"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_1_10958)">
+                            <path
+                              d="M8.20254 1.29746L1.73654 7.76346M1.73654 7.76346L8.20254 14.2295M1.73654 7.76346L34.2635 7.76346"
+                              stroke-width="1.2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_1_10958">
+                              <rect width="36" height="16" fill="white" transform="matrix(-1 0 0 1 36 0.5)" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <span>Back</span>
+                      </button>
+                    </div>
+                    <div class="date-range__popup-main js-simplebar">
+                      <div class="date-range__calendar-box">
+                        <div class="date-range__calendar"></div>
+                      </div>
+                    </div>
+                    <div class="date-range__popup-footer">
+                      <button class="btn btn--full date-range__popup-btn" disabled>Select date</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-guests filters__field">
+                  <label class="text text--lh-13 input-guests__label">Guests Number</label>
+                  <div class="input-guests__content">
+                    <div class="input-guests__main input-guests__main--hidden">
+                      <input
+                        class="input-guests__field input-guests__field--border"
+                        type="text"
+                        placeholder="How many guests?"
+                        name="guests"
+                        data-validate="empty"
+                        readonly />
+                    </div>
+                    <svg
+                      class="input-guests__arrow"
+                      width="14"
+                      height="8"
+                      viewBox="0 0 14 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L7 7L13 1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="guests-menu guests-menu--transparent input-guests__menu">
+                      <div class="guests-menu__list js-simplebar">
+                        <div class="guests-menu__item" data-label="guests">
+                          <div class="guests-menu__item-info">
+                            <div class="text text--lh-13 guests-menu__item-text">Adults</div>
+                            <div class="text text--lh-13 text--xs text--primary-dark-60 guests-menu__item-text">Age 13+</div>
+                          </div>
+                          <div class="counter counter--high guests-menu__item-counter" data-min="0" data-max="20">
+                            <button type="button" class="counter__minus">
+                              <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M11.7108 0.22876H0.289157C0.129542 0.22876 0 0.358302 0 0.517916V1.48196C0 1.64158 0.129542 1.77112 0.289157 1.77112H11.7108C11.8705 1.77112 12 1.64158 12 1.48196V0.517916C12 0.358302 11.8705 0.22876 11.7108 0.22876Z" />
+                              </svg>
+                            </button>
+                            <input class="counter__input" type="number" value="0" readonly />
+                            <button type="button" class="counter__plus">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5.42857H6.57143V0H5.42857V5.42857H0V6.57143H5.42857V12H6.57143V6.57143H12V5.42857Z" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="guests-menu__item" data-label="childs">
+                          <div class="guests-menu__item-info">
+                            <div class="text text--lh-13 guests-menu__item-text">Children</div>
+                            <div class="text text--lh-13 text--xs text--primary-dark-60 guests-menu__item-text">Age 1 to 12</div>
+                          </div>
+                          <div class="counter counter--high guests-menu__item-counter" data-min="0" data-max="20">
+                            <button type="button" class="counter__minus">
+                              <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M11.7108 0.22876H0.289157C0.129542 0.22876 0 0.358302 0 0.517916V1.48196C0 1.64158 0.129542 1.77112 0.289157 1.77112H11.7108C11.8705 1.77112 12 1.64158 12 1.48196V0.517916C12 0.358302 11.8705 0.22876 11.7108 0.22876Z" />
+                              </svg>
+                            </button>
+                            <input class="counter__input" type="number" value="0" readonly />
+                            <button type="button" class="counter__plus">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5.42857H6.57143V0H5.42857V5.42857H0V6.57143H5.42857V12H6.57143V6.57143H12V5.42857Z" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="guests-menu__item" data-label="infants">
+                          <div class="guests-menu__item-info">
+                            <div class="text text--lh-13 guests-menu__item-text">Infants</div>
+                            <div class="text text--lh-13 text--xs text--primary-dark-60 guests-menu__item-text">Under 1 year</div>
+                          </div>
+                          <div class="counter counter--high guests-menu__item-counter" data-min="0" data-max="20">
+                            <button type="button" class="counter__minus">
+                              <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M11.7108 0.22876H0.289157C0.129542 0.22876 0 0.358302 0 0.517916V1.48196C0 1.64158 0.129542 1.77112 0.289157 1.77112H11.7108C11.8705 1.77112 12 1.64158 12 1.48196V0.517916C12 0.358302 11.8705 0.22876 11.7108 0.22876Z" />
+                              </svg>
+                            </button>
+                            <input class="counter__input" type="number" value="0" readonly />
+                            <button type="button" class="counter__plus">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5.42857H6.57143V0H5.42857V5.42857H0V6.57143H5.42857V12H6.57143V6.57143H12V5.42857Z" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="guests-menu__item" data-label="pets">
+                          <div class="guests-menu__item-info">
+                            <div class="text text--lh-13 guests-menu__item-text">Pets</div>
+                            <div class="text text--lh-13 text--xs text--primary-dark-60 guests-menu__item-text">An extra fee may apply</div>
+                          </div>
+                          <div class="counter counter--high guests-menu__item-counter" data-min="0" data-max="20">
+                            <button type="button" class="counter__minus">
+                              <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M11.7108 0.22876H0.289157C0.129542 0.22876 0 0.358302 0 0.517916V1.48196C0 1.64158 0.129542 1.77112 0.289157 1.77112H11.7108C11.8705 1.77112 12 1.64158 12 1.48196V0.517916C12 0.358302 11.8705 0.22876 11.7108 0.22876Z" />
+                              </svg>
+                            </button>
+                            <input class="counter__input" type="number" value="0" readonly />
+                            <button type="button" class="counter__plus">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5.42857H6.57143V0H5.42857V5.42857H0V6.57143H5.42857V12H6.57143V6.57143H12V5.42857Z" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="text text--danger text--sm input-guests__error"></span>
+                </div>
+                <div class="input-checkboxes filters__field dropdown">
+                  <label class="text text--lh-13 input-checkboxes__label">Region</label>
+                  <div class="input-checkboxes__content">
+                    <div class="input-checkboxes__main">
+                      <div class="input-checkboxes__btn input-checkboxes__btn--border dropdown__btn">
+                        <span class="input-checkboxes__placeholder">Select region</span>
+                        <div class="input-checkboxes__values"></div>
+                      </div>
+                      <input class="input-checkboxes__field" type="hidden" name="region" data-validate="empty" />
+                    </div>
+                    <svg
+                      class="input-checkboxes__arrow"
+                      width="14"
+                      height="8"
+                      viewBox="0 0 14 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L7 7L13 1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="checkbox-menu checkbox-menu--border input-checkboxes__menu dropdown__main">
+                      <div class="checkbox-menu__list js-simplebar">
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 2" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 3" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 4" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 5" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 6" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 7" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                        <label class="checkbox checkbox-menu__item">
+                          <input class="checkbox__input" type="checkbox" value="Bavaria 8" />
+                          <span class="checkbox__switch"></span>
+                          <span class="checkbox__text">Bavaria</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="text text--danger text--sm input-checkboxes__error"></span>
+                </div>
+              </div>
+              <div class="filters__groups">
+                <div class="filters__group">
+                  <div class="text text--lg filters__group-label">Location type</div>
+                  <div class="filters__group-list">
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="location-type" value="City" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">City</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="location-type" value="Countryside" checked />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Countryside</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <div class="text text--lg filters__group-label">Additional Amenities</div>
+                  <div class="filters__group-list">
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="additional-amenities" value="Pool" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Pool</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="additional-amenities" value="Sauna" checked />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Sauna</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="additional-amenities" value="SPA" checked />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">SPA</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="additional-amenities" value="Tennis court" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Tennis court</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <div class="text text--lg filters__group-label">Photo/Events Allowed</div>
+                  <div class="filters__group-list">
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="radio" name="photo-events-allowed" value="Yes" />
+                      <span class="checkbox__switch checkbox__switch--circle"></span>
+                      <span class="checkbox__text">Yes</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="radio" name="photo-events-allowed" value="No" checked />
+                      <span class="checkbox__switch checkbox__switch--circle"></span>
+                      <span class="checkbox__text">No</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <div class="text text--lg filters__group-label">Transport аccessibility</div>
+                  <div class="filters__group-list">
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="transport-accessibility" value="Near airport" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Near airport</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="transport-accessibility" value="Near the train station" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Near the train station</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <div class="text text--lg filters__group-label">Nearby attractions</div>
+                  <div class="filters__group-list">
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="radio" name="nearby-attractions" value="Yes" checked />
+                      <span class="checkbox__switch checkbox__switch--circle"></span>
+                      <span class="checkbox__text">Yes</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="radio" name="nearby-attractions" value="No" />
+                      <span class="checkbox__switch checkbox__switch--circle"></span>
+                      <span class="checkbox__text">No</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="filters__group">
+                  <div class="text text--lg filters__group-label">Class villas</div>
+                  <div class="filters__group-list">
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="class-villas" value="Luxury" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Luxury</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="class-villas" value="Standard" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Standard</span>
+                    </label>
+                    <label class="checkbox filters__group-item">
+                      <input class="checkbox__input" type="checkbox" name="class-villas" value="Simple" />
+                      <span class="checkbox__switch"></span>
+                      <span class="checkbox__text">Simple</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="filters__footer">
+              <div class="filters__btns">
+                <button class="btn btn--px-3xs filters__btn" type="button">Find villas</button>
+                <button class="btn btn--px-3xs btn--border filters__btn" type="button">Clear filters</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
   </body>
 </html>

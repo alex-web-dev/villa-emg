@@ -85,6 +85,6 @@ if ($map) {
   }
 
   function getStates() {
-    return [100, 432, window.innerHeight - $mapHeader.offsetHeight - $pageHeader.offsetHeight];
+    return [100, 400, window.innerHeight - $mapHeader.offsetHeight - $pageHeader.offsetHeight];
   }
 }

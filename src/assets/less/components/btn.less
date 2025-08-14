@@ -47,9 +47,19 @@
     }
   }
 
+  &--px-lg {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+
   &--px-sm {
     padding-left: 40px;
     padding-right: 40px;
+  }
+
+  &--px-xs {
+    padding-left: 26px;
+    padding-right: 26px;
   }
 
   &--px-2xs {
@@ -65,6 +75,11 @@
   &--py-xs {
     padding-top: 8px;
     padding-bottom: 8px;
+  }
+
+  &--py-2xs {
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   &--border {
@@ -124,6 +139,7 @@
     &:disabled {
       color: @color-grey;
       border-color: @color-grey;
+      background-color: transparent;
     }
   }
 
@@ -146,8 +162,12 @@
 
     &.btn--disabled,
     &:disabled {
-      color: @color-grey;
+      color: @color-white;
       border-color: @color-grey;
+
+      &:hover {
+        background-color: @color-grey;
+      }
     }
 
     &:hover {
@@ -156,6 +176,35 @@
           fill: @color-primary-dark;
         }
       }
+    }
+  }
+
+  &--white {
+    background-color: @color-white;
+    color: @color-primary-dark;
+
+    &:hover {
+      background-color: @color-white;
+      color: @color-primary-dark;
+    }
+
+    &.btn--disabled,
+    &:disabled {
+      color: @color-white;
+
+      &:hover {
+        background-color: @color-grey;
+      }
+    }
+  }
+
+  &--secondary-20 {
+    background-color: @color-secondary-20;
+    color: @color-primary-dark;
+
+    &:hover {
+      background-color: @color-secondary-20;
+      color: @color-primary-dark;
     }
   }
 
@@ -189,5 +238,15 @@
     padding-top: 12px;
     padding-bottom: 12px;
     font-size: 16px;
+
+    &--py-2xs {
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+
+    &--px-xs {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
   }
 }

@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: flex-start;
   user-select: none;
+  cursor: pointer;
 
   &__input {
     display: none;
@@ -24,6 +25,28 @@
       .pseudo-icon("../img/icons/check-white.svg", 10px, 10px);
       visibility: hidden;
     }
+
+    &--mt-2 {
+      margin-top: 2px;
+    }
+
+    &--circle {
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1px solid @color-primary-dark;
+
+      &:before {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 9px;
+        height: 9px;
+        background: none;
+        border-radius: 50%;
+        background-color: @color-primary;
+      }
+    }
   }
 
   &__input:checked ~ &__switch {
@@ -31,6 +54,11 @@
 
     &:before {
       visibility: visible;
+    }
+
+    &--circle {
+      background: transparent;
+      border-color: @color-primary;
     }
   }
 

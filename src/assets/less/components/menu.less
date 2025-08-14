@@ -10,6 +10,7 @@
   background-color: @color-bg;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.5s, visibility 0.5s;
 
   &--show {
@@ -19,6 +20,7 @@
   &--active {
     opacity: 1;
     visibility: visible;
+    pointer-events: initial;
   }
 
   &__container {
@@ -100,6 +102,11 @@
 
   &__logo {
     display: none;
+
+    .logo__img--second {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &__logo-icon {
@@ -216,7 +223,7 @@
     }
 
     &__header {
-      padding: 20px @container-offset;
+      padding: 23px @container-offset;
       display: flex;
       align-items: center;
       justify-content: space-between;

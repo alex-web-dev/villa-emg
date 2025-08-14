@@ -16,10 +16,21 @@
     align-items: center;
     justify-content: center;
     gap: 32px;
+
+    &--mt-0 {
+      margin-top: 0;
+    }
   }
 
   &__footer {
-    display: none;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--mobile {
+      display: none;
+    }
   }
 
   @media (max-width: 767px) {
@@ -42,14 +53,11 @@
     }
 
     &__footer {
-      margin-top: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin-top: 24px;
+    }
 
-      &--mobile {
-        display: none;
-      }
+    &__footer-btn {
+      width: 100%;
     }
   }
 

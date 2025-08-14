@@ -8,6 +8,10 @@
     position: relative;
   }
 
+  &__main--hidden {
+    display: none;
+  }
+
   &__field {
     padding-left: 20px;
     padding-right: 30px;
@@ -83,6 +87,10 @@
     transition: stroke 0.15s;
   }
 
+  &__main--hidden ~ &__arrow {
+    display: none;
+  }
+
   &:hover &__arrow,
   &--active &__arrow {
     stroke: @color-primary;
@@ -105,7 +113,7 @@
   @media (max-width: 767px) {
     &__menu {
       &--xl {
-        min-width: none;
+        min-width: auto;
       }
     }
   }

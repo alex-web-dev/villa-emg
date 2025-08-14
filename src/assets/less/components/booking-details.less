@@ -1,0 +1,158 @@
+.booking-details {
+  padding: 32px;
+  background-color: @color-bg;
+  display: flex;
+  flex-direction: column;
+  width: 692px;
+  max-width: 100%;
+
+  &__header {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tabs-list {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__dates {
+    max-width: 100%;
+  }
+
+  &__dates-box {
+    .flatpickr-calendar.inline {
+      width: 100% !important;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  &__tab {
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &--mt-lg {
+      margin-top: 32px;
+    }
+  }
+
+  &__tab-footer-box {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  &__tab-footer {
+    padding-top: 20px;
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid @color-secondary-40;
+  }
+
+  &__clear-dates,
+  &__clear-guests {
+    &--mobile {
+      display: none;
+    }
+  }
+
+  &__input-guests {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0;
+
+    &__header {
+      margin-bottom: 0;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid @color-secondary-40;
+    }
+
+    &__main {
+      padding: 20px;
+    }
+
+    &__clear-dates,
+    &__clear-guests {
+      display: none;
+
+      &--mobile {
+        display: inline-block;
+      }
+    }
+
+    &__btn {
+      width: 100%;
+    }
+
+    &__dates {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      border-bottom: 1px solid @color-secondary-40;
+    }
+
+    &__dates-box {
+      .flatpickr-calendar {
+        padding: 0 0 12px;
+        width: 100%;
+      }
+
+      .flatpickr-weekdays {
+        justify-content: center;
+      }
+
+      .flatpickr-days {
+        justify-content: center;
+      }
+
+      .flatpickr-weekdaycontainer {
+        width: 337px;
+        min-width: auto;
+        max-width: 337px;
+      }
+
+      .dayContainer {
+        width: calc(337px);
+        min-width: auto;
+        max-width: calc(337px);
+      }
+
+      .flatpickr-day {
+        max-width: 43px;
+        height: 43px;
+        line-height: 43px;
+      }
+
+      .flatpickr-months .flatpickr-prev-month,
+      .flatpickr-months .flatpickr-next-month {
+        top: 0;
+      }
+    }
+
+    &__input-guests {
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid @color-secondary-40;
+    }
+  }
+}
