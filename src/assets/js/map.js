@@ -153,14 +153,14 @@ if ($map) {
 
   // Icons
   const defaultIcon = L.icon({
-    iconUrl: "/assets/img/icons/map-pin-circle.svg",
+    iconUrl: "assets/img/icons/map-pin-circle.svg",
     iconSize: [28, 28],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],
   });
 
   const activeIcon = L.icon({
-    iconUrl: "/assets/img/icons/map-pin.svg",
+    iconUrl: "assets/img/icons/map-pin.svg",
     iconSize: [37, 44],
     iconAnchor: [22, 40],
     popupAnchor: [0, -32],
