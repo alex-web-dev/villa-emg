@@ -35,7 +35,7 @@ $popups.forEach(($popup) => {
   });
 });
 
-function closePopup($popup) {
+export function closePopup($popup) {
   $popup.classList.remove("popup--active");
   $popup.addEventListener(
     "transitionend",
@@ -48,7 +48,7 @@ function closePopup($popup) {
   );
 }
 
-function openPopup($popup) {
+export function openPopup($popup) {
   $popup.classList.add("popup--active");
   if ($popup.dataset.popupLock === "no" || ($popup.dataset.popupLock === "mobile" && window.innerWidth >= 768)) {
     return;
@@ -58,3 +58,8 @@ function openPopup($popup) {
     lockBody(".menu, .header", `popup-${$popup.dataset.popupName}`);
   }
 }
+
+export default {
+  openPopup,
+  closePopup,
+};

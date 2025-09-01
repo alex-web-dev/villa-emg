@@ -1,0 +1,16 @@
+.nav-link {
+  padding: 11px 20px;
+  border-radius: 20px;
+  transition: background 0.3s;
+
+  &.tabs-btns__btn--active {
+    background-color: @color-secondary-20;
+    cursor: default;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    font-size: 16px;
+  }
+}

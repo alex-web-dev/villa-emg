@@ -35,21 +35,25 @@ if ($villa) {
   const $dateRange = $datesBox.querySelector(".date-range");
   const $datesFieldStart = $dates.querySelector(".date-range__input-field--start");
   const $datesFieldEnd = $dates.querySelector(".date-range__input-field--end");
+  const $datesHiddenFieldStart = $dates.querySelector(".date-range__input-field-hidden--start");
+  const $datesHiddenFieldEnd = $dates.querySelector(".date-range__input-field-hidden--end");
   const $datesAvailable = $dates.querySelector(".villa__dates-available");
   const $datesBooked = $dates.querySelector(".villa__dates-booked");
   const $datesBookedValue = $datesBooked.querySelector(".villa__dates-booked-value");
   const $datesClear = $dates.querySelector(".villa__dates-clear");
 
   $submit.addEventListener("click", () => {
-    if (!$datesFieldStart.value || !$datesFieldEnd.value) {
-      $datesBox.classList.add("villa__dates-box--error");
+    const id = $villa.dataset.id;
 
-      const headerHeight = document.querySelector(".header").offsetHeight;
-      window.scrollTo({
-        top: $dates.getBoundingClientRect().top + window.scrollY - headerHeight,
-        behavior: "smooth",
-      });
-    }
+    const params = new URLSearchParams();
+
+    if (id) params.set("id", id);
+    if ($datesHiddenFieldStart?.value) params.set($datesHiddenFieldStart.name, $datesHiddenFieldStart.value);
+    if ($datesHiddenFieldEnd?.value) params.set($datesHiddenFieldEnd.name, $datesHiddenFieldEnd.value);
+
+    const url = `booking-request.html${params.toString() ? "?" + params.toString() : ""}`;
+
+    window.location.href = url;
   });
 
   const selectedDatesHandler = () => {

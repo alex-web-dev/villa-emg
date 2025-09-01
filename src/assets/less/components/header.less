@@ -67,6 +67,7 @@
     z-index: 1;
     display: flex;
     align-items: center;
+    gap: 12px;
   }
 
   &__logo {
@@ -77,14 +78,25 @@
     margin-left: auto;
   }
 
+  &__btn {
+    margin-left: 10px;
+    flex: none;
+  }
+
   &__menu-toggle {
-    margin-left: 58px;
+    margin-left: 44px;
     flex: none;
   }
 
   @media (max-width: 1280px) {
     &__menu-toggle {
-      margin-left: 48px;
+      margin-left: 34px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    &__menu-toggle {
+      margin-left: 20px;
     }
   }
 
@@ -93,6 +105,10 @@
     padding-bottom: 24px;
 
     &__menu {
+      display: none;
+    }
+
+    &__btn {
       display: none;
     }
 

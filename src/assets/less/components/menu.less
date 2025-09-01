@@ -63,6 +63,10 @@
     padding: 40px 0;
   }
 
+  &__left-btn {
+    display: none;
+  }
+
   &__contacts-box {
     padding-top: 10px;
     margin: auto 0;
@@ -208,6 +212,7 @@
     }
 
     &__left {
+      margin-right: 0;
       order: 3;
       width: 100%;
       padding-left: @container-offset;
@@ -264,8 +269,18 @@
 
   @media (max-width: 767px) {
     &__left {
-      padding-top: 52px;
+      padding-top: 24px;
       padding-bottom: 33px;
+    }
+
+    &__left-btn {
+      display: inline-block;
+    }
+
+    &__contacts-box {
+      &:not(:first-child) {
+        padding-top: 52px;
+      }
     }
 
     &__main-item {

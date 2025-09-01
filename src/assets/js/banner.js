@@ -17,7 +17,7 @@ if ($sliderBox) {
     slidesPerView: 1,
     speed: 700,
     autoplay: {
-      delay: 5000
+      delay: 6000
     },
     loop: true,
     navigation: {

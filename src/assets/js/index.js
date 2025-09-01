@@ -29,3 +29,6 @@ import './villa.js';
 import './igallery.js';
 import './gallery-popup.js';
 import './tabs.js';
+import './villa-card.js';
+import './booking-request.js';
+import './location-card.js';

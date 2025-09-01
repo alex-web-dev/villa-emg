@@ -11,9 +11,12 @@ if ($sliderBox) {
   const $btnRight = $sliderBox.querySelector(".info-slider__navigation-right");
 
   new Swiper($slider, {
-    effect: 'fade',
+    effect: "fade",
     slidesPerView: 1,
     speed: 600,
+    autoplay: {
+      delay: 6000,
+    },
     loop: true,
     pagination: {
       el: $pagination,

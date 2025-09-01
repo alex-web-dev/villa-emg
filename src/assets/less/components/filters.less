@@ -75,6 +75,13 @@
   }
 
   @media (max-width: 767px) {
+    position: relative;
+    padding-bottom: 10px;
+
+    &__main {
+      padding-bottom: 0;
+    }
+
     &__groups {
       flex-direction: column;
       gap: 20px;
@@ -94,6 +101,13 @@
 
     &__btn {
       width: 100%;
+    }
+
+    &__footer {
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      background-color: @color-bg;
     }
   }
 }

@@ -25,8 +25,10 @@ document.querySelectorAll(".date-range").forEach(($input) => {
     const $fieldStart = $input.querySelector(".date-range__input-field--start");
     const $fieldEnd = $input.querySelector(".date-range__input-field--end");
     const $popupBtn = $datePopup.querySelector(".date-range__popup-btn");
-
+    const $hiddenStart = $input.querySelector(".date-range__input-field-hidden--start");
+    const $hiddenEnd = $input.querySelector(".date-range__input-field-hidden--end");
     const $inputMain = $input.querySelector(".date-range__main");
+
     $inputMain.addEventListener("click", () => {
       $datePopup.classList.add("date-range__popup--active");
     });
@@ -63,15 +65,23 @@ document.querySelectorAll(".date-range").forEach(($input) => {
       },
       onOpen(selectedDates, dateStr, instance) {
         if ($fieldStart.value && $fieldEnd.value) return;
-        const parsedDates = getFieldsParsedDates($fieldStart, $fieldEnd, instance);
+        const parsedDates = [flatpickr.parseDate($hiddenStart.value, "Y-m-d"), flatpickr.parseDate($hiddenEnd.value, "Y-m-d")];
         instance.setDate(parsedDates, false);
       },
       onReady(selectedDates, dateStr, instance) {
-        handler(instance);
+        setTimeout(() => handler(instance));
+        if ($hiddenStart.value) {
+          $fieldStart.value = flatpickr.formatDate(flatpickr.parseDate($hiddenStart.value, "Y-m-d"), "D d/m");
+        }
+        if ($hiddenEnd.value) {
+          $fieldEnd.value = flatpickr.formatDate(flatpickr.parseDate($hiddenEnd.value, "Y-m-d"), "D d/m");
+        }
 
         if ($fieldStart.value && $fieldEnd.value) {
-          const parsedDates = getFieldsParsedDates($fieldStart, $fieldEnd, instance);
+          const parsedDates = [flatpickr.parseDate($hiddenStart.value, "Y-m-d"), flatpickr.parseDate($hiddenEnd.value, "Y-m-d")];
           instance.setDate(parsedDates, false);
+          instance.changeMonth(new Date().getMonth(), false);
+          instance.changeYear(new Date().getFullYear());
         }
 
         if (!$input.dataset.clearButtonsInit) {
@@ -85,6 +95,12 @@ document.querySelectorAll(".date-range").forEach(($input) => {
       },
     });
 
+    const clearStart = $input.querySelector(".date-range__input-clear--start");
+    const clearEnd = $input.querySelector(".date-range__input-clear--end");
+
+    clearStart.addEventListener("click", () => handler(calendarPicker));
+    clearEnd.addEventListener("click", () => handler(calendarPicker));
+
     $popupBtn.addEventListener("click", () => {
       if (calendarPicker.selectedDates.length === 0) {
         return;
@@ -95,6 +111,11 @@ document.querySelectorAll(".date-range").forEach(($input) => {
         $fieldEnd.value = flatpickr.formatDate(calendarPicker.selectedDates[1], "D d/m");
         $fieldStart.dispatchEvent(new Event("input", { bubbles: true }));
         $fieldEnd.dispatchEvent(new Event("input", { bubbles: true }));
+
+        $hiddenStart.value = flatpickr.formatDate(calendarPicker.selectedDates[0], "Y-m-d");
+        $hiddenEnd.value = flatpickr.formatDate(calendarPicker.selectedDates[1], "Y-m-d");
+        $hiddenStart.dispatchEvent(new Event("input", { bubbles: true }));
+        $hiddenEnd.dispatchEvent(new Event("input", { bubbles: true }));
       }
 
       updateFieldState($fieldStart);
@@ -123,7 +144,11 @@ document.querySelectorAll(".date-range").forEach(($input) => {
 function initPicker($input) {
   const $fieldStart = $input.querySelector(".date-range__input-field--start");
   const $fieldEnd = $input.querySelector(".date-range__input-field--end");
-  let inline = $input.classList.contains("date-range--inline") ? true : false;
+
+  const inline = $input.classList.contains("date-range--inline") ? true : false;
+
+  const $hiddenStart = $input.querySelector(".date-range__input-field-hidden--start");
+  const $hiddenEnd = $input.querySelector(".date-range__input-field-hidden--end");
 
   const fp = flatpickr($input, {
     mode: "range",
@@ -139,8 +164,29 @@ function initPicker($input) {
       if (selectedDates.length === 2) {
         $fieldStart.value = flatpickr.formatDate(selectedDates[0], "D d/m");
         $fieldEnd.value = flatpickr.formatDate(selectedDates[1], "D d/m");
+
+        if ($hiddenStart && $hiddenEnd) {
+          $hiddenStart.value = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+          $hiddenEnd.value = flatpickr.formatDate(selectedDates[1], "Y-m-d");
+        }
+      } else if (selectedDates.length === 0) {
+        $fieldStart.value = "";
+        $fieldEnd.value = "";
+
+        if ($hiddenStart && $hiddenEnd) {
+          $hiddenStart.value = "";
+          $hiddenEnd.value = "";
+        }
+      }
+
+      if (selectedDates.length === 2 || selectedDates.length === 0) {
         $fieldStart.dispatchEvent(new Event("input", { bubbles: true }));
         $fieldEnd.dispatchEvent(new Event("input", { bubbles: true }));
+
+        if ($hiddenStart && $hiddenEnd) {
+          $hiddenStart.dispatchEvent(new Event("input", { bubbles: true }));
+          $hiddenEnd.dispatchEvent(new Event("input", { bubbles: true }));
+        }
       }
 
       updateFieldState($fieldStart);
@@ -148,12 +194,32 @@ function initPicker($input) {
     },
     onOpen(selectedDates, dateStr, instance) {
       if ($fieldStart.value && $fieldEnd.value) return;
-      const parsedDates = getFieldsParsedDates($fieldStart, $fieldEnd, instance);
+
+      let parsedDates = null;
+      if ($hiddenStart && $hiddenEnd) {
+        parsedDates = [flatpickr.parseDate($hiddenStart.value, "Y-m-d"), flatpickr.parseDate($hiddenEnd.value, "Y-m-d")];
+      } else {
+        parsedDates = [flatpickr.parseDate($fieldStart.value, "Y-m-d"), flatpickr.parseDate($fieldEnd.value, "Y-m-d")];
+      }
+
       instance.setDate(parsedDates, false);
     },
     onReady(selectedDates, dateStr, instance) {
+      if ($hiddenStart && $hiddenStart.value) {
+        $fieldStart.value = flatpickr.formatDate(flatpickr.parseDate($hiddenStart.value, "Y-m-d"), "D d/m");
+      }
+      if ($hiddenStart && $hiddenEnd.value) {
+        $fieldEnd.value = flatpickr.formatDate(flatpickr.parseDate($hiddenEnd.value, "Y-m-d"), "D d/m");
+      }
+
       if ($fieldStart.value && $fieldEnd.value) {
-        const parsedDates = getFieldsParsedDates($fieldStart, $fieldEnd, instance);
+        let parsedDates = null;
+        if ($hiddenStart && $hiddenEnd) {
+          parsedDates = [flatpickr.parseDate($hiddenStart.value, "Y-m-d"), flatpickr.parseDate($hiddenEnd.value, "Y-m-d")];
+        } else {
+          parsedDates = [flatpickr.parseDate($fieldStart.value, "Y-m-d"), flatpickr.parseDate($fieldEnd.value, "Y-m-d")];
+        }
+        
         instance.setDate(parsedDates, false);
       }
 
@@ -164,6 +230,14 @@ function initPicker($input) {
 
       if ($input.classList.contains("date-range--border")) {
         instance.calendarContainer.classList.add("flatpickr--border");
+      }
+
+      if (selectedDates.length === 2) {
+        $fieldStart.value = flatpickr.formatDate(selectedDates[0], "D d/m");
+        $fieldEnd.value = flatpickr.formatDate(selectedDates[1], "D d/m");
+
+        $hiddenStart.value = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+        $hiddenEnd.value = flatpickr.formatDate(selectedDates[1], "Y-m-d");
       }
     },
   });

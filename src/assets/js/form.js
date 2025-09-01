@@ -190,6 +190,18 @@ $forms.forEach(($form) => {
     $field.addEventListener("focus", () => {
       $input.classList.remove("input-guests--error");
     });
+
+    const $counters = $input.querySelectorAll(".counter");
+    $counters.forEach(($counter) => {
+      $counter.addEventListener("counter:click", () => {
+        $form.dispatchEvent(
+          new Event("change", {
+            bubbles: true,
+            cancelable: true,
+          })
+        );
+      });
+    });
   });
 
   const $inputsDateRange = $form.querySelectorAll(".date-range");
@@ -263,7 +275,7 @@ function validateEmail($field) {
   return emailPattern.test($field.value.trim());
 }
 
-function clearForm($form) {
+export function clearForm($form) {
   const $inputs = $form.querySelectorAll(".input");
   $inputs.forEach(($input) => {
     const $field = $input.querySelector(".input__field");
@@ -299,6 +311,7 @@ function clearForm($form) {
   $inputsGuests.forEach(($inputGuests) => {
     const $field = $inputGuests.querySelector(".input-guests__field");
     $field.value = "";
+    $field.dispatchEvent(new Event("input", { bubbles: true }));
 
     const $counters = $inputGuests.querySelectorAll(".guests-menu__item-counter");
     $counters.forEach(($counter) => {
@@ -312,8 +325,17 @@ function clearForm($form) {
     const $fieldEnd = $input.querySelector(".date-range__input-field--end");
     $fieldStart.value = "";
     $fieldEnd.value = "";
+    $fieldStart.dispatchEvent(new Event("input", { bubbles: true }));
+    $fieldEnd.dispatchEvent(new Event("input", { bubbles: true }));
     $fieldStart.classList.remove("date-range__input-field--fill");
     $fieldEnd.classList.remove("date-range__input-field--fill");
+
+    const $fieldHiddenStart = $input.querySelector(".date-range__input-field-hidden--start");
+    const $fieldHiddenEnd = $input.querySelector(".date-range__input-field-hidden--end");
+    $fieldHiddenStart.value = "";
+    $fieldHiddenEnd.value = "";
+    $fieldHiddenStart.dispatchEvent(new Event("input", { bubbles: true }));
+    $fieldHiddenEnd.dispatchEvent(new Event("input", { bubbles: true }));
   });
 
   const $inputsCheckboxes = $form.querySelectorAll(".input-checkboxes");
@@ -323,4 +345,34 @@ function clearForm($form) {
 
     updateCheckboxMenuFromField($inputCheckbox);
   });
+
+  const $checkboxes = $form.querySelectorAll('.checkbox__input[type="checkbox"]');
+  $checkboxes.forEach(($checkbox) => {
+    if ($checkbox.closest(".checkbox-menu")) return;
+
+    $checkbox.checked = false;
+    $checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+
+  const radioGroups = {};
+  const $radios = $form.querySelectorAll('.checkbox__input[type="radio"]');
+  $radios.forEach(($radio) => {
+    const name = $radio.name;
+    if (!radioGroups[name]) radioGroups[name] = [];
+    radioGroups[name].push($radio);
+  });
+
+  Object.values(radioGroups).forEach((group) => {
+    group.forEach(($radio, index) => {
+      const shouldCheck = index === 0;
+      if ($radio.checked !== shouldCheck) {
+        $radio.checked = shouldCheck;
+        $radio.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+  });
 }
+
+export default {
+  clearForm,
+};

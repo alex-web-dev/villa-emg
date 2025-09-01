@@ -15,18 +15,6 @@ document.querySelectorAll(".counter").forEach(($counter) => {
     return Math.min(Math.max(value, min), max);
   };
 
-  const emitChange = (value) => {
-    const event = new CustomEvent("counter:change", {
-      bubbles: true,
-      detail: {
-        value,
-        counter: $counter,
-        input: $input,
-      },
-    });
-    $counter.dispatchEvent(event);
-  };
-
   const updateButtons = () => {
     const val = clamp(Number($input.value));
     $input.value = val;
@@ -47,7 +35,7 @@ document.querySelectorAll(".counter").forEach(($counter) => {
       $plus.classList.remove("counter__plus--disabled");
     }
 
-    emitChange(val);
+    emitEvent('change', $counter, $input, val);
   };
 
   $counter.update = updateButtons;
@@ -59,11 +47,13 @@ document.querySelectorAll(".counter").forEach(($counter) => {
   $plus.addEventListener("click", () => {
     $input.value = clamp(Number($input.value) + 1);
     updateButtons();
+    emitEvent('click', $counter, $input, $input.value);
   });
 
   $minus.addEventListener("click", () => {
     $input.value = clamp(Number($input.value) - 1);
     updateButtons();
+    emitEvent('click', $counter, $input, $input.value);
   });
 
   $input.addEventListener("input", updateButtons);
@@ -71,3 +61,15 @@ document.querySelectorAll(".counter").forEach(($counter) => {
 
   updateButtons();
 });
+
+function emitEvent(name, $counter, $input, value) {
+  const event = new CustomEvent(`counter:${name}`, {
+    bubbles: true,
+    detail: {
+      value,
+      counter: $counter,
+      input: $input,
+    },
+  });
+  $counter.dispatchEvent(event);
+}

@@ -11,10 +11,13 @@ if ($sliderBox) {
   const $btnRight = $sliderBox.querySelector(".villa-slider__navigation-right");
 
   new Swiper($slider, {
-    effect: 'fade',
+    effect: "fade",
     slidesPerView: 1,
     speed: 600,
     loop: true,
+    autoplay: {
+      delay: 6000,
+    },
     pagination: {
       el: $pagination,
       clickable: true,
