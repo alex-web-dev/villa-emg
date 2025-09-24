@@ -1,7 +1,16 @@
 const $formSend = document.querySelector(".js-form-params-send");
 
 $formSend?.addEventListener("formSuccess", (event) => {
-  const formData = new FormData(event.detail.form);
+  const form = event.detail.form;
+  const formData = new FormData(form);
+
+  for (const [key] of formData.entries()) {
+    const field = form.elements[key];
+    if (field && field.hasAttribute("data-params-ignore")) {
+      formData.delete(key);
+    }
+  }
+
   const params = new URLSearchParams(formData);
   window.location.href = "villas.html?" + params.toString();
 });
