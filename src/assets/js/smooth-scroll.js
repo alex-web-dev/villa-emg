@@ -21,3 +21,12 @@ $anchors.forEach(($anchor) => {
     }
   });
 });
+
+updateHeaderHeightVar();
+window.addEventListener("resize", updateHeaderHeightVar);
+
+function updateHeaderHeightVar() {
+  const header = document.querySelector(".header");
+  const h = header ? header.offsetHeight : 0;
+  document.documentElement.style.setProperty("--header-height", `${h}px`);
+}
