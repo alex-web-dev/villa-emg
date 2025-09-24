@@ -15,6 +15,7 @@ $inputsGuests.forEach(($inputGuests) => {
 function updateInput($input) {
   const parts = [];
   const $items = $input.querySelectorAll(".guests-menu__item");
+
   $items.forEach(($item) => {
     const $counterField = $item.querySelector(".counter__input");
     const label = $item.dataset.label;
@@ -26,18 +27,26 @@ function updateInput($input) {
   });
 
   const result = parts.join(", ");
+
+  const $hiddenField = $input.querySelector(".input-guests__hidden-field");
+  $hiddenField.value = result;
+  $hiddenField.dispatchEvent(new Event("input", { bubbles: true }));
+
   const $field = $input.querySelector(".input-guests__field");
-  $field.value = result;
+  $field.value = getShortResultStr(parts);
   $field.dispatchEvent(new Event("input", { bubbles: true }));
 }
 
 function updateMenu($input) {
-  const $field = $input.querySelector(".input-guests__field");
-  const value = $field.value.trim();
+  const $hiddenField = $input.querySelector(".input-guests__hidden-field");
+  const value = $hiddenField.value.trim();
   const parts = value
     .split(",")
     .map((part) => part.trim())
     .filter(Boolean);
+
+  const $field = $input.querySelector(".input-guests__field");
+  $field.value = getShortResultStr(parts);
 
   const $items = $input.querySelectorAll(".guests-menu__item");
 
@@ -55,4 +64,24 @@ function updateMenu($input) {
     }
     $counter.update();
   });
+}
+
+function getShortResultStr(result) {
+  let guestsCount = 0;
+  let petsCount = 0;
+
+  let shortResult = [];
+  result.forEach((resultItem) => {
+    const [value, label] = resultItem.split(" ");
+    if (label === "pets") {
+      petsCount += +value;
+    } else {
+      guestsCount += +value;
+    }
+  });
+
+  if (guestsCount > 0) shortResult.push(`${guestsCount} guests`);
+  if (petsCount > 0) shortResult.push(`${petsCount} pets`);
+
+  return shortResult.join(", ");
 }

@@ -296,10 +296,15 @@
                   <div class="input-guests__content">
                     <div class="input-guests__main">
                       <input
-                        class="input-guests__field dropdown__btn js-form-params-fill-input"
+                        class="input-guests__field dropdown__btn"
                         type="text"
                         placeholder="How many guests?"
                         name="guests"
+                        readonly />
+                      <input
+                        class="input-guests__hidden-field dropdown__btn js-form-params-fill-input"
+                        type="hidden"
+                        name="guests-hidden"
                         readonly />
                     </div>
                     <svg
