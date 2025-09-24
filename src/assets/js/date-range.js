@@ -263,6 +263,8 @@ function setupClearButtons($input, instance) {
   const $fieldEnd = $input.querySelector(".date-range__input-field--end");
   const clearStart = $input.querySelector(".date-range__input-clear--start");
   const clearEnd = $input.querySelector(".date-range__input-clear--end");
+  const $hiddenStart = $input.querySelector(".date-range__input-field-hidden--start");
+  const $hiddenEnd = $input.querySelector(".date-range__input-field-hidden--end");
 
   updateFieldState($fieldStart);
   updateFieldState($fieldEnd);
@@ -275,6 +277,8 @@ function setupClearButtons($input, instance) {
       e.stopPropagation();
       $fieldStart.value = "";
       $fieldStart.dispatchEvent(new Event("input", { bubbles: true }));
+      $hiddenStart.value = "";
+      $hiddenStart.dispatchEvent(new Event("input", { bubbles: true }));
       if (instance) instance.setDate(getFieldsParsedDates($fieldStart, $fieldEnd, instance), false);
       updateFieldState($fieldStart);
     });
@@ -285,6 +289,8 @@ function setupClearButtons($input, instance) {
       e.stopPropagation();
       $fieldEnd.value = "";
       $fieldEnd.dispatchEvent(new Event("input", { bubbles: true }));
+      $hiddenEnd.value = "";
+      $hiddenEnd.dispatchEvent(new Event("input", { bubbles: true }));
       if (instance) instance.setDate(getFieldsParsedDates($fieldStart, $fieldEnd, instance), false);
       updateFieldState($fieldEnd);
     });
