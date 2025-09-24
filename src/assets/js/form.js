@@ -134,8 +134,6 @@ $forms.forEach(($form) => {
       if ($form.dataset.formNoClear === undefined) {
         clearForm($form);
       }
-    } else {
-      // Success
     }
   });
 
