@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   background-color: @color-bg;
+  height: auto;
 
   &__body {
     margin-left: 43px;
@@ -68,13 +69,21 @@
     &__img-box {
       padding-top: 304px;
       width: 100%;
+      flex: none;
     }
 
     &__body {
       margin-left: 0;
       margin-top: 24px;
       padding-right: 0;
-      flex: none;
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__btns {
+      margin-top: auto;
+      padding-top: 32px;
     }
 
     &__title {
