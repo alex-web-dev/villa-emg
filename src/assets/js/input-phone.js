@@ -13,6 +13,8 @@ $phoneInputs.forEach(($phoneInput) => {
   const $items = $phoneInput.querySelectorAll(".phone-menu__item");
   $items.forEach(($item) => {
     $item.addEventListener("click", () => {
+      currentMask.value = '';
+
       const newFlag = $item.querySelector(".phone-menu__item-flag").src;
       const newCode = $item.dataset.code;
       const newMaskPattern = $item.dataset.mask;
