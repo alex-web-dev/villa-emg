@@ -31,7 +31,7 @@ window.addEventListener("load", () => {
     $inputGuests.addEventListener("counter:change", () => updateCountersState(guestsMax, $inputGuestsCountersNotPets));
     $inputGuests.addEventListener("counter:click", () => updateCountersState(guestsMax, $inputGuestsCountersNotPets));
 
-    enforceGuestsLimit(guestsMax, $inputGuestsCountersNotPets)
+    enforceGuestsLimit(guestsMax, $inputGuestsCountersNotPets);
     updateCountersState(guestsMax, $inputGuestsCountersNotPets);
 
     /* Init details */
@@ -47,6 +47,56 @@ window.addEventListener("load", () => {
         updatePriceDetails($bookingInfo);
         updateTripDetails($bookingInfo);
         closePopup($detailsPopup);
+      });
+    });
+
+    const $submit = document.querySelector(".booking-info__btn");
+    const $hiddenDateFieldStart = $bookingDetails.querySelector(".booking-details__dates .date-range__input-field-hidden--start");
+    const $hiddenDateFieldEnd = $bookingDetails.querySelector(".booking-details__dates .date-range__input-field-hidden--end");
+    const $guestsField = $bookingDetails.querySelector(".booking-details__input-guests .input-guests__field");
+    
+    const $errorDates = $bookingInfo.querySelector(".booking-info__details-error--dates");
+    const $errorGuests = $bookingInfo.querySelector(".booking-info__details-error--guests");
+    const $detailsErrorDates = $bookingDetails.querySelector(".booking-details__error--dates");
+    const $detailsErrorGuests = $bookingDetails.querySelector(".booking-details__error--guests");
+    
+    const $detailsOpenBtn = $bookingInfo.querySelector(".booking-info__details-btn");
+    const $detailsTabsBtnDates = $bookingDetails.querySelector(".booking-details__tabs-btn--dates");
+    const $detailsTabsBtnGuests = $bookingDetails.querySelector(".booking-details__tabs-btn--guests");
+
+    $submit.addEventListener("click", () => {
+      if (!$hiddenDateFieldStart.value || !$hiddenDateFieldEnd.value) {
+        $errorDates?.classList.remove("text--hidden");
+        $detailsErrorDates?.classList.remove("text--hidden");
+        $detailsOpenBtn.classList.add("btn--border-danger");
+        $detailsTabsBtnDates.classList.add("nav-btn--danger");
+      }
+
+      if (!$guestsField.value) {
+        $errorGuests?.classList.remove("text--hidden");
+        $detailsErrorGuests?.classList.remove("text--hidden");
+        $detailsOpenBtn.classList.add("btn--border-danger");
+        $detailsTabsBtnGuests.classList.add("nav-btn--danger");
+      }
+    });
+
+    $detailsSaveBtns.forEach(($saveBtn) => {
+      $saveBtn.addEventListener("click", () => {
+        if ($hiddenDateFieldStart.value && $hiddenDateFieldEnd.value) {
+          $errorDates?.classList.add("text--hidden");
+          $detailsErrorDates?.classList.add("text--hidden");
+          $detailsTabsBtnDates?.classList.remove("nav-btn--danger");
+        }
+
+        if ($guestsField.value) {
+          $errorGuests?.classList.add("text--hidden");
+          $detailsErrorGuests?.classList.add("text--hidden");
+          $detailsTabsBtnGuests.classList.remove("nav-btn--danger");
+        }
+
+        if ($hiddenDateFieldStart.value && $hiddenDateFieldEnd.value && $guestsField.value) {
+          $detailsOpenBtn.classList.remove("btn--border-danger");
+        }
       });
     });
   }

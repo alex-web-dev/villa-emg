@@ -3,11 +3,16 @@
   font-size: 18px;
   border-radius: 10px;
   background-color: @color-secondary-20;
+  border: 1px solid transparent;
   transition: background 0.3s;
 
   &.tabs-btns__btn--active {
     background-color: @color-secondary-30;
     cursor: default;
+  }
+
+  &--danger {
+    border-color: @color-danger;
   }
 
   @media (max-width: 767px) {

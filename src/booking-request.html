@@ -497,7 +497,7 @@
                       <div class="booking-info__details-header">
                         <span class="text booking-info__details-label">Trip details</span>
                         <button
-                          class="btn btn--secondary-20 btn--px-xs btn--py-2xs booking-info__details-btn js-open-popup"
+                          class="btn btn--secondary-20 btn--border-1 btn--px-xs btn--py-2xs booking-info__details-btn js-open-popup"
                           type="button"
                           data-popup-name="booking-details">
                           Change
@@ -507,9 +507,11 @@
                         <div class="booking-info__detail booking-info__detail--date">
                           <span class="text text--light booking-info__detail-text booking-info__detail-text--date"></span>
                         </div>
+                        <div class="text text--danger text--sm text--hidden booking-info__details-error booking-info__details-error--dates">Please select dates</div>
                         <div class="booking-info__detail booking-info__detail--guests">
                           <span class="text text--light booking-info__detail-text--guests"></span>
                         </div>
+                        <div class="text text--danger text--sm text--hidden booking-info__details-error booking-info__details-error--guests">Please enter number of guests</div>
                       </div>
                     </div>
                     <div class="booking-info__details">
@@ -656,8 +658,8 @@
             <div class="booking-details__main">
               <div class="nav-btns booking-details__tabs-btns">
                 <div class="nav-btns__list tabs-btns" data-tabs-name="change-details">
-                  <button class="nav-btn nav-btns__btn tabs-btns__btn tabs-btns__btn--active">Dates</button>
-                  <button class="nav-btn nav-btns__btn tabs-btns__btn">Guests</button>
+                  <button class="nav-btn nav-btns__btn tabs-btns__btn tabs-btns__btn--active booking-details__tabs-btn booking-details__tabs-btn--dates">Dates</button>
+                  <button class="nav-btn nav-btns__btn tabs-btns__btn booking-details__tabs-btn booking-details__tabs-btn--guests">Guests</button>
                 </div>
               </div>
 
@@ -712,6 +714,7 @@
                           </div>
                         </div>
                       </div>
+                      <div class="text text--danger text--sm text--hidden booking-details__error booking-details__error--dates">Please select dates</div>
                     </div>
                   </div>
                   <button
@@ -839,6 +842,7 @@
                     </div>
                     <span class="text text--danger text--sm input-guests__error"></span>
                   </div>
+                  <div class="text text--danger text--sm text--hidden booking-details__error booking-details__error--guests">Please enter number of guests</div>
                   <button
                     class="text text--primary text--line text--line-xs booking-details__clear-guests booking-details__clear-guests--mobile"
                     type="button">
