@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-import "sweetalert2/src/sweetalert2.scss";
 import { updateCheckboxMenuFromField } from "./input-checkboxes";
 
 const $forms = document.querySelectorAll(".js-form");
@@ -133,27 +131,11 @@ $forms.forEach(($form) => {
       });
       $form.dispatchEvent(successFormEvent);
 
-      if ($form.dataset.formNoAlertSuccess === undefined) {
-        Swal.fire({
-          text: "Thank you! Your message has been sent successfully",
-          icon: "success",
-          showConfirmButton: false,
-          showCloseButton: true,
-        });
-      }
-
       if ($form.dataset.formNoClear === undefined) {
         clearForm($form);
       }
     } else {
-      if ($form.dataset.formNoAlertError === undefined) {
-        Swal.fire({
-          text: "Some fields are filled out incorrectly. Please review and try again.",
-          icon: "error",
-          showConfirmButton: false,
-          showCloseButton: true,
-        });
-      }
+      // Success
     }
   });
 
