@@ -54,12 +54,12 @@ window.addEventListener("load", () => {
     const $hiddenDateFieldStart = $bookingDetails.querySelector(".booking-details__dates .date-range__input-field-hidden--start");
     const $hiddenDateFieldEnd = $bookingDetails.querySelector(".booking-details__dates .date-range__input-field-hidden--end");
     const $guestsField = $bookingDetails.querySelector(".booking-details__input-guests .input-guests__field");
-    
+
     const $errorDates = $bookingInfo.querySelector(".booking-info__details-error--dates");
     const $errorGuests = $bookingInfo.querySelector(".booking-info__details-error--guests");
     const $detailsErrorDates = $bookingDetails.querySelector(".booking-details__error--dates");
     const $detailsErrorGuests = $bookingDetails.querySelector(".booking-details__error--guests");
-    
+
     const $detailsOpenBtn = $bookingInfo.querySelector(".booking-info__details-btn");
     const $detailsTabsBtnDates = $bookingDetails.querySelector(".booking-details__tabs-btn--dates");
     const $detailsTabsBtnGuests = $bookingDetails.querySelector(".booking-details__tabs-btn--guests");
@@ -145,7 +145,12 @@ function updateTripDetails($bookingInfo) {
   const $inputGuests = document.querySelector(".booking-details__input-guests");
   const $inputGuestsCountersFields = $inputGuests.querySelectorAll(".counter__input");
   const guestsTotal = [...$inputGuestsCountersFields].reduce((sum, input) => {
-    return sum + Number.parseInt(input.value) || 0;
+    const $item = input.closest(".guests-menu__item");
+    if ($item.dataset.label !== "pets") {
+      return sum + Number.parseInt(input.value) || 0;
+    } else {
+      return sum;
+    }
   }, 0);
 
   if (guestsTotal !== 0) {
@@ -153,6 +158,17 @@ function updateTripDetails($bookingInfo) {
     $detailGuests.classList.add("booking-info__detail--active");
   } else {
     $detailGuests.classList.remove("booking-info__detail--active");
+  }
+
+  const $detailPets = $bookingInfo.querySelector(".booking-info__detail--pets");
+  const $detailPetsText = $bookingInfo.querySelector(".booking-info__detail-text--pets");
+  const petsTotal = +$inputGuests.querySelector('.guests-menu__item[data-label="pets"] .counter__input').value;
+
+  if (petsTotal !== 0) {
+    $detailPetsText.innerText = `Pets ${petsTotal}`;
+    $detailPets.classList.add("booking-info__detail--active");
+  } else {
+    $detailPets.classList.remove("booking-info__detail--active");
   }
 }
 
