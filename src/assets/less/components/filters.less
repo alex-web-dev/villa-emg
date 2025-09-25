@@ -71,6 +71,30 @@
   @media (max-width: 991px) {
     &__fields {
       display: block;
+
+      .input-guests {
+        &__label {
+          display: none;
+        }
+        
+        &__main {
+          display: none;
+        }
+
+        &__arrow {
+          display: none;
+        }
+        
+        .guests-menu {
+          position: static;
+          display: block;
+          padding-left: 0;
+          padding-right: 0;
+          box-shadow: none;
+          background-color: transparent;
+          border: none;
+        }
+      }
     }
   }
 
