@@ -193,6 +193,10 @@ function initPicker($input) {
       updateFieldState($fieldEnd);
     },
     onOpen(selectedDates, dateStr, instance) {
+      if (window.innerWidth <= 991) {
+          instance.calendarContainer.style.width = `${$input.offsetWidth}px`;
+      }
+      
       if ($fieldStart.value && $fieldEnd.value) return;
 
       let parsedDates = null;

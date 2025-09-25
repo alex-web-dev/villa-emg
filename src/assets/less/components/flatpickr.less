@@ -363,3 +363,11 @@ span.flatpickr-weekday {
     box-shadow: -6px 0 0 @color-secondary-20, 5px 0 0 @color-secondary-20;
   }
 }
+
+@media (max-width: 991px) {
+  .flatpickr-calendar:not(.inline) {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    max-width: min(calc(100% - @container-offset * 2), 400px);
+  }
+}
