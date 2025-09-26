@@ -80,24 +80,30 @@ window.addEventListener("load", () => {
       }
     });
 
-    $detailsSaveBtns.forEach(($saveBtn) => {
-      $saveBtn.addEventListener("click", () => {
+    [$hiddenDateFieldStart, $hiddenDateFieldEnd].forEach(($field) => {
+      $field.addEventListener("input", () => {
         if ($hiddenDateFieldStart.value && $hiddenDateFieldEnd.value) {
           $errorDates?.classList.add("text--hidden");
           $detailsErrorDates?.classList.add("text--hidden");
           $detailsTabsBtnDates?.classList.remove("nav-btn--danger");
         }
 
-        if ($guestsField.value) {
-          $errorGuests?.classList.add("text--hidden");
-          $detailsErrorGuests?.classList.add("text--hidden");
-          $detailsTabsBtnGuests.classList.remove("nav-btn--danger");
-        }
-
         if ($hiddenDateFieldStart.value && $hiddenDateFieldEnd.value && $guestsField.value) {
           $detailsOpenBtn.classList.remove("btn--border-danger");
         }
       });
+    });
+
+    $guestsField.addEventListener("input", () => {
+      if ($guestsField.value) {
+        $errorGuests?.classList.add("text--hidden");
+        $detailsErrorGuests?.classList.add("text--hidden");
+        $detailsTabsBtnGuests.classList.remove("nav-btn--danger");
+      }
+
+      if ($hiddenDateFieldStart.value && $hiddenDateFieldEnd.value && $guestsField.value) {
+        $detailsOpenBtn.classList.remove("btn--border-danger");
+      }
     });
   }
 });
