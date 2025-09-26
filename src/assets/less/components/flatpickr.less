@@ -368,6 +368,22 @@ span.flatpickr-weekday {
   .flatpickr-calendar:not(.inline) {
     left: 50% !important;
     transform: translateX(-50%) !important;
-    max-width: min(calc(100% - @container-offset * 2), 400px);
+  }
+}
+
+@media (max-width: 767px) {
+  .flatpickr-calendar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .flatpickr-calendar:not(.inline) {
+    width: 440px;
+    max-width: 100%;
+
+    .flatpickr-weekdays,
+    .flatpickr-days {
+      justify-content: center;
+    }
   }
 }
