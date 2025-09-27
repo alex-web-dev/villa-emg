@@ -316,8 +316,10 @@ export function clearForm($form) {
     $fieldHiddenEnd.value = "";
     $fieldHiddenStart.dispatchEvent(new Event("input", { bubbles: true }));
     $fieldHiddenEnd.dispatchEvent(new Event("input", { bubbles: true }));
-  });
 
+    $input._flatpickr?.clear();
+  });
+  
   const $inputsCheckboxes = $form.querySelectorAll(".input-checkboxes");
   $inputsCheckboxes.forEach(($inputCheckbox) => {
     const $field = $inputCheckbox.querySelector(".input-checkboxes__field");

@@ -85,7 +85,7 @@ document.querySelectorAll(".date-range").forEach(($input) => {
         }
 
         if (!$input.dataset.clearButtonsInit) {
-          setupClearButtons($input, instance);
+          setupClearButtons($input);
           $input.dataset.clearButtonsInit = "true";
         }
 
@@ -98,6 +98,7 @@ document.querySelectorAll(".date-range").forEach(($input) => {
         }
       },
     });
+    $input._flatpickr = calendarPicker;
 
     const clearStart = $input.querySelector(".date-range__input-clear--start");
     const clearEnd = $input.querySelector(".date-range__input-clear--end");
@@ -242,7 +243,7 @@ function initPicker($input) {
       }
 
       if (!$input.dataset.clearButtonsInit) {
-        setupClearButtons($input, instance);
+        setupClearButtons($input);
         $input.dataset.clearButtonsInit = "true";
       }
 
@@ -276,7 +277,7 @@ function getMonthsToShow() {
   return window.innerWidth >= 768 ? 2 : 1;
 }
 
-function setupClearButtons($input, instance) {
+function setupClearButtons($input) {
   const $fieldStart = $input.querySelector(".date-range__input-field--start");
   const $fieldEnd = $input.querySelector(".date-range__input-field--end");
   const clearStart = $input.querySelector(".date-range__input-clear--start");
@@ -297,7 +298,7 @@ function setupClearButtons($input, instance) {
       $fieldStart.dispatchEvent(new Event("input", { bubbles: true }));
       $hiddenStart.value = "";
       $hiddenStart.dispatchEvent(new Event("input", { bubbles: true }));
-      if (instance) instance.setDate(getFieldsParsedDates($fieldStart, $fieldEnd, instance), false);
+      if ($input._flatpickr) $input._flatpickr.setDate(getFieldsParsedDates($fieldStart, $fieldEnd, $input._flatpickr), false, "d.m.Y");
       updateFieldState($fieldStart);
     });
   }
@@ -309,7 +310,7 @@ function setupClearButtons($input, instance) {
       $fieldEnd.dispatchEvent(new Event("input", { bubbles: true }));
       $hiddenEnd.value = "";
       $hiddenEnd.dispatchEvent(new Event("input", { bubbles: true }));
-      if (instance) instance.setDate(getFieldsParsedDates($fieldStart, $fieldEnd, instance), false);
+      if ($input._flatpickr) $input._flatpickr.setDate(getFieldsParsedDates($fieldStart, $fieldEnd, $input._flatpickr), false, "d.m.Y");
       updateFieldState($fieldEnd);
     });
   }
