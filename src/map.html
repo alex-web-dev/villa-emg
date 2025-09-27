@@ -294,7 +294,7 @@
                 data-form-no-clear>
                 <div class="map-form__fields-box">
                   <div class="map-form__fields">
-                    <div class="date-range date-range--border map-form__item">
+                    <div class="date-range date-range--border map-form__item map-form__item--dates">
                       <label class="text text--lh-13 date-range__label">Stay Dates</label>
                       <div class="date-range__main">
                         <div class="date-range__input date-range__input--start">
@@ -968,6 +968,86 @@
               </button>
             </div>
             <form class="filters__main js-form js-form-params-fill">
+              <div class="date-range date-range--border date-range--popup filters__field filters__field--dates">
+                <label class="text text--lh-13 date-range__label">Stay Dates</label>
+                <div class="date-range__main">
+                  <div class="date-range__input date-range__input--start">
+                    <div class="date-range__input-main">
+                      <img class="date-range__input-icon" src="assets/img/icons/calendar.svg" alt="" />
+                      <input
+                        class="date-range__input-field date-range__input-field--start"
+                        type="text"
+                        readonly
+                        data-validate="empty"
+                        name="date-start"
+                        placeholder="Select data" />
+                      <input
+                        class="date-range__input-field-hidden date-range__input-field-hidden--start js-form-params-fill-input"
+                        type="hidden"
+                        name="date-start-hidden" />
+                      <button class="date-range__input-clear date-range__input-clear--start" type="button">
+                        <img src="assets/img/icons/exit.svg" alt="" />
+                      </button>
+                    </div>
+                    <span class="text text--danger text--sm date-range__error date-range__error--start"></span>
+                  </div>
+                  <div class="date-range__input date-range__input--end">
+                    <div class="date-range__input-main">
+                      <img class="date-range__input-icon" src="assets/img/icons/calendar.svg" alt="" />
+                      <input
+                        class="date-range__input-field date-range__input-field--end"
+                        type="text"
+                        readonly
+                        data-validate="empty"
+                        name="date-end"
+                        placeholder="Select data" />
+                      <input
+                        class="date-range__input-field-hidden date-range__input-field-hidden--end js-form-params-fill-input"
+                        type="hidden"
+                        name="date-end-hidden" />
+                      <button class="date-range__input-clear date-range__input-clear--end" type="button">
+                        <img src="assets/img/icons/exit.svg" alt="" />
+                      </button>
+                    </div>
+                    <span class="text text--danger text--sm date-range__error date-range__error--end"></span>
+                  </div>
+                </div>
+                <div class="date-range__popup">
+                  <div class="date-range__popup-header">
+                    <button class="link link--iflex date-range__popup-back" type="button">
+                      <svg
+                        class="link__icon link__icon--stroke link__icon--mx-xl"
+                        width="36"
+                        height="17"
+                        viewBox="0 0 36 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1_10958)">
+                          <path
+                            d="M8.20254 1.29746L1.73654 7.76346M1.73654 7.76346L8.20254 14.2295M1.73654 7.76346L34.2635 7.76346"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_10958">
+                            <rect width="36" height="16" fill="white" transform="matrix(-1 0 0 1 36 0.5)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      <span>Back</span>
+                    </button>
+                  </div>
+                  <div class="date-range__popup-main js-simplebar">
+                    <div class="date-range__calendar-box">
+                      <div class="date-range__calendar"></div>
+                    </div>
+                  </div>
+                  <div class="date-range__popup-footer">
+                    <button class="btn btn--full date-range__popup-btn" disabled type="button">Select date</button>
+                  </div>
+                </div>
+              </div>
               <div class="filters__fields"></div>
               <div class="filters__groups">
                 <div class="filters__group">

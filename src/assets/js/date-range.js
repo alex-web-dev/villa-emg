@@ -77,7 +77,7 @@ document.querySelectorAll(".date-range").forEach(($input) => {
           $fieldEnd.value = flatpickr.formatDate(flatpickr.parseDate($hiddenEnd.value, "Y-m-d"), "D d/m");
         }
 
-        if ($fieldStart.value && $fieldEnd.value) {
+        if ($fieldStart.value || $fieldEnd.value) {
           const parsedDates = [flatpickr.parseDate($hiddenStart.value, "Y-m-d"), flatpickr.parseDate($hiddenEnd.value, "Y-m-d")];
           instance.setDate(parsedDates, false);
           instance.changeMonth(new Date().getMonth(), false);
@@ -92,14 +92,24 @@ document.querySelectorAll(".date-range").forEach(($input) => {
         if ($input.classList.contains("date-range--border")) {
           instance.calendarContainer.classList.add("flatpickr--border");
         }
+
+        if ($hiddenStart.value && $hiddenEnd.value) {
+          $popupBtn.removeAttribute("disabled");
+        }
       },
     });
 
     const clearStart = $input.querySelector(".date-range__input-clear--start");
     const clearEnd = $input.querySelector(".date-range__input-clear--end");
 
-    clearStart.addEventListener("click", () => handler(calendarPicker));
-    clearEnd.addEventListener("click", () => handler(calendarPicker));
+    clearStart.addEventListener("click", () => {
+      rewritePopupDatepicker(calendarPicker);
+      $popupBtn.setAttribute("disabled", "");
+    });
+    clearEnd.addEventListener("click", () => {
+      rewritePopupDatepicker(calendarPicker);
+      $popupBtn.setAttribute("disabled", "");
+    });
 
     $popupBtn.addEventListener("click", () => {
       if (calendarPicker.selectedDates.length === 0) {
@@ -121,25 +131,33 @@ document.querySelectorAll(".date-range").forEach(($input) => {
       updateFieldState($fieldStart);
       updateFieldState($fieldEnd);
 
+      rewritePopupDatepicker(calendarPicker);
+
       $datePopup.classList.remove("date-range__popup--active");
     });
-
-    function handler(instance) {
-      const dayContainers = instance.calendarContainer.querySelectorAll(".dayContainer");
-      const months = instance.calendarContainer.querySelectorAll(".flatpickr-months .flatpickr-month");
-      const weekdays = instance.calendarContainer.querySelectorAll(".flatpickr-weekdays .flatpickr-weekdaycontainer");
-
-      dayContainers.forEach((dayContainer, i) => {
-        const box = document.createElement("div");
-        box.className = "dayContainerBox";
-        box.append(months[i].cloneNode(true));
-        box.append(weekdays[i].cloneNode(true));
-
-        dayContainer.append(box);
-      });
-    }
   }
 });
+
+function rewritePopupDatepicker(instance) {
+  instance.changeMonth(new Date().getMonth(), false);
+  instance.changeYear(new Date().getFullYear());
+  handler(instance);
+}
+
+function handler(instance) {
+  const dayContainers = instance.calendarContainer.querySelectorAll(".dayContainer");
+  const months = instance.calendarContainer.querySelectorAll(".flatpickr-months .flatpickr-month");
+  const weekdays = instance.calendarContainer.querySelectorAll(".flatpickr-weekdays .flatpickr-weekdaycontainer");
+
+  dayContainers.forEach((dayContainer, i) => {
+    const box = document.createElement("div");
+    box.className = "dayContainerBox";
+    box.append(months[i].cloneNode(true));
+    box.append(weekdays[i].cloneNode(true));
+
+    dayContainer.append(box);
+  });
+}
 
 function initPicker($input) {
   const $fieldStart = $input.querySelector(".date-range__input-field--start");
@@ -219,7 +237,7 @@ function initPicker($input) {
         } else {
           parsedDates = [flatpickr.parseDate($fieldStart.value, "Y-m-d"), flatpickr.parseDate($fieldEnd.value, "Y-m-d")];
         }
-        
+
         instance.setDate(parsedDates, false);
       }
 
