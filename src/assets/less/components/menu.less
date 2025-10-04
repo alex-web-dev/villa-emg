@@ -30,10 +30,13 @@
   &__content {
     position: relative;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__body-box {
     height: 100%;
+    min-height: 0;
 
     .simplebar-content {
       height: 100%;
@@ -61,6 +64,9 @@
   &__left-content {
     margin: auto 0;
     padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
   }
 
   &__left-btn {
@@ -69,7 +75,8 @@
 
   &__contacts-box {
     padding-top: 10px;
-    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: 30px;
   }
 
   &__contacts {
@@ -114,7 +121,7 @@
   }
 
   &__logo-icon {
-    margin-top: 30px;
+    margin-top: auto;
     max-width: 46px;
   }
 
@@ -217,10 +224,16 @@
       width: 100%;
       padding-left: @container-offset;
       padding-right: @container-offset;
+      padding-top: 24px;
+      padding-bottom: 33px;
     }
 
     &__left-content {
       padding: 0;
+    }
+
+    &__contacts-box {
+      margin-bottom: 0;
     }
 
     &__logo {
@@ -268,11 +281,6 @@
   }
 
   @media (max-width: 767px) {
-    &__left {
-      padding-top: 24px;
-      padding-bottom: 33px;
-    }
-
     &__left-btn {
       display: inline-block;
     }
